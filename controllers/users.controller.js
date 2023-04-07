@@ -1,3 +1,5 @@
+const {getRequest, postRequest} = require('../clients/httpClient');
+
 const users = [
     {
         id: 1,
@@ -20,13 +22,21 @@ const users = [
 ];
 
 const getUsers = async (req, res) => {
-    res.status(200).json(users);
+    // const { id } = req.params;
+    // console.log(`https://gorest.co.in/public/v2/users/804440/posts`);
+    // const data = await getRequest(`http://localhost:3000/posts`);
+    const data = await getRequest(`https://gorest.co.in/public/v2/users/804440/posts`);
+    console.log(data);
+    res.status(200).json(data);
 };
 
+// add user using postRequest
 const addUser = async (req, res) => {
     const user = req.body;
-    user.id = users.length + 1;
-    users.push(user);
+    console.log(user);
+    // await postRequest(`http://localhost:3000/posts`, 'POST', user);
+    await postRequest(`https://gorest.co.in/public/v2/users/804440/posts`, 'POST', user);
+    // users.push(user);
     res.status(201).json(user);
 };
 
