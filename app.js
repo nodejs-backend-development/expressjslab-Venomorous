@@ -8,11 +8,8 @@ const requestTime = require('./middlewares/timeMeasure');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-// const { addUser } = require('./controllers/users.controller');
 
 const app = express();
-
-const apiUrl = 'https://gorest.co.in/';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +25,6 @@ app.use(requestTime);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

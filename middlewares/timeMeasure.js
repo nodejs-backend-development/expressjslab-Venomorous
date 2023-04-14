@@ -3,16 +3,11 @@ const requestTime = (req, res, next) => {
 
     res.on('finish', () => {
         const elapsed = process.hrtime(start);
-        const elapsedTimeInMs = (elapsed[0] * 1000) + (elapsed[1] / 1000000);
+        const elapsedTimeInMs = elapsed[0] * 1000 + elapsed[1] / 1000000;
         console.log(`Request to ${req.path} took ${elapsedTimeInMs.toFixed(3)} ms`);
     });
 
-  next();
-}
+    next();
+};
 
 module.exports = requestTime;
-
-// export function logger(req, res, next){
-//     console.log(`Req.time: ${req.requestTime}`);
-//     next();
-// }
